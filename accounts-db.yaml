@@ -59,8 +59,11 @@ spec:
           mountPath: /var/lib/postgresql/data
           subPath: postgres
       volumes:
+        #      - name: postgresdb
+        #        emptyDir: {}
       - name: postgresdb
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: account-db
 # [END gke_boa_kubernetes_manifests_accounts_db_statefulset_accounts_db]
 ---
 # [START gke_boa_kubernetes_manifests_accounts_db_service_accounts_db]
